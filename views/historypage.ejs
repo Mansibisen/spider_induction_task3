@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #container{
+        text-align: center;
+    border-style: solid;
+    width:50%;
+    margin-left: 350px;
+    
+    }
+    body {
+  font-size: 28px;
+}
+
+
+
+
+footer{
+    background-color: #333;
+    text-align: center;
+    height:200px;
+    color: white;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #4CAF50;
+}
+
+.active {
+  background-color: #4CAF50;
+}
+
+
+
+
+</style>
+<body>
+    
+<ul>
+    <li><a  href="#home">Home</a></li>
+    <li><a href="#contact">Contact</a></li>
+</ul>
+    <% var max = data.value.length %>
+        <% for( var i=0; i< max; i++){%>
+            <br>
+            <div id="container">
+                
+                <div >
+                    <div >
+                        <br>
+                        <% if(data.value[i]. productImage){ %>
+                          <a href="#"><img class="card-img-top" src="./uploads/<%= data.value[i]. productImage %>" alt="" width="700px" height="400px"></a>
+                          <%} else { %>
+                            <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+                            <%}%>
+                        <div >
+                          <h3 >
+                            <a href="#"><%=data.value[i].itemname%></a>
+                          </h3>
+                          <p> No.of purchase:- <%=data.value[i].Noofpurchase%></p>
+                          <p> Customer-Name :- <%=data.value[i].customername%> </p>
+                          
+                        </div>
+                      
+                    </div>
+                  </div>
+                
+            </div>
+            <br>
+        <%}%>
+
+        <footer >
+            <div class="container">
+              <p class="m-0 text-center text-white">Copyright &copy; NYKAAAAA Website 2020</p>
+            </div>
+            <!-- /.container -->
+    </footer>
+</body>
+</html>

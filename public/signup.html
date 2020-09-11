@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html{
+        background-attachment:fixed;
+        background-image: url('signup.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        }
+        .form{
+            text-align: center;
+            margin-top: 200px;
+            margin-bottom: 200px;
+            font-size: 40px;
+        }
+        #text{
+            width:50%;
+            padding: 12px 20px;
+            border-radius: 6px;
+            box-sizing: border-box;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+        }
+        #password{
+            width:50%;
+            padding: 12px 20px;
+            border-radius: 6px;
+            box-sizing: border-box;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            
+
+        }
+        #role{
+            width:50%;
+            padding: 12px 20px;
+            border-radius: 6px;
+            box-sizing: border-box;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+
+        }
+        #submit{
+            width: 25%;
+            border-radius: 6px;
+            background-color:#C49102;
+            color: black;
+            padding: 14px 20px;
+            font-size: 30px;
+            cursor: pointer;
+            border: none;
+            margin: 8px 0;
+        }
+        p{
+            font-size: 25px;
+        }
+        #message {
+  display:none;
+  background: #f1f1f1;
+  color: #000;
+  position: relative;
+  padding: 20px;
+  margin-top: 10px;
+}
+
+#message p {
+  padding: 10px 35px;
+  font-size: 18px;
+}
+
+/* Add a green text color and a checkmark when the requirements are right */
+.valid {
+  color: green;
+}
+
+.valid:before {
+  position: relative;
+  left: -35px;
+  ;
+}
+.invalid {
+  color: red;
+}
+
+.invalid:before {
+  position: relative;
+  left: -35px;
+  ;
+}
+    </style>
+</head>
+<body>
+    <form class='form' action='/signup' method="POST">
+        <label>Name:</label><br>
+        <input type ="text"  id='text'name="username" required><br><br>
+        <label>Email:</label><br>
+        <input type ="email" id='text'name="email"  required><br><br>
+        <label>Phone:</label><br>
+        <input type ="tel" name="phone"  id='text'placeholder ="123-456-789"  required ><br><br>
+        <label>Role</label><br>
+        <select id="role" name="role">
+            <option value = "seller">SELLER</option>
+            <option value = "customer">CUSTOMER</option>
+        </select><br><br>
+        <label>Password:</label><br>
+        <input type ="password" name="password" id='password' pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number 
+        and one uppercase and lowercase letter,and at least 8 or more characters" required ><br><br>
+        
+        <input type='submit' value='submit' id='submit' onclick="compul()"><br><br>
+        <div id='message'>
+            <h5>Password must contain the following:</h5>
+            <p id='letter' class="invalid">A<b>lowercase</b>letter</p>
+            <p id='capital' class="invalid">A<b>Uppercase</b>letter</p>
+            <p id='number' class="invalid">A<b>number</b></p>
+            <p id='length' class="invalid">minimum<b>8</b>characters</p>
+            
+            
+        </div>
+
+</form>
+</body>
+<script>
+    
+function compul(){
+    var x = document.getElementById('text').required;
+    var y = document.getElementById('password').required;
+    var z = document.getElementById('role').required;
+  }
+
+    var myInput = document.getElementById("password");
+    var letter = document.getElementById('letter');
+    var capital = document.getElementById('capital');
+    var number = document.getElementById('number');
+    var length1 = document.getElementById('length');
+    myInput.onfocus = function(){
+        document.getElementById('message').style.display = 'block';
+    }
+    myInput.onblur = function(){
+        document.getElementById('message').style.display = 'none';
+    }
+    myInput.onkeyup = function(){
+        var lowerCaseletters = /[a-z]/g ;
+        if(myInput.value.match(lowerCaseletters)){
+            letter.classList.remove("invalid");
+            letter.classList.add("valid")
+        }else{
+            letter.classList.remove('valid');
+            letter.classList.add("invalid")
+        }
+        var upperCaseletters=/[A-Z]/g;
+        if(myInput.value.match(upperCaseletters)){
+            capital.classList.remove("invalid");
+            capital.classList.add("valid")
+        }else{
+            capital.classList.remove('valid');
+            capital.classList.add("invalid")
+        }
+        var numbers=/[0-9]/g
+        if(myInput.value.match(numbers)){
+            number.classList.remove("invalid");
+            number.classList.add("valid")
+        }else{
+            number.classList.remove('valid');
+            number.classList.add("invalid")
+        }
+        if(myInput.value.length >=8 ){
+            length1.classList.remove('invalid');
+            length1.classList.add('valid')
+        }else{
+            length1.classList.remove('valid');
+            length1.classList.add('invalid')
+
+        }
+
+
+    }
+
+    
+
+</script>
+</html>

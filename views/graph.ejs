@@ -1,0 +1,114 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <style>
+        #chartContainer{
+            margin-left: 400px;
+        }
+        #chartContainer2{
+            margin-left: 400px;
+        }
+        footer{
+    background-color: #333;
+    text-align: center;
+    height:200px;
+    color: white;
+}
+#button{
+    width: 25%;
+            border-radius: 6px;
+            background-color:#4CAF50;
+            color: black;
+            padding: 14px 20px;
+            font-size: 30px;
+            cursor: pointer;
+            border: none;
+            margin: 8px 0;
+}
+.header{
+    height:300px;
+    color: white;
+    text-align: center;
+    font-size: 40px;
+    background-attachment:fixed;
+        background-image: url('flat-30-off.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+    
+}
+        
+    </style>
+    
+
+</head>
+
+<body>
+    <div class="header">
+        <br><br><br>
+        <h1>NYKAAAAA</h1>
+        
+    </div>
+    <button id="button">render</button>
+<div id="chartContainer" style="height: 500px; width: 800px;"></div>
+<br><br><br><br>
+<div id="chartContainer2" style="height: 500px; width: 800px"></div>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"> </script>
+
+<footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; NYKAAAAA Website 2020</p>
+    </div>
+    <!-- /.container -->
+</footer>
+</body>
+<script type="text/javascript">
+    var btn= document.getElementById("button")
+    btn.addEventListener("click",
+    graphrender)
+     function graphrender () {
+        
+        
+        var test = '<%- JSON.stringify(data) %>'
+        var x=JSON.parse(test)
+        console.log(x.value.length)
+        console.log(x.value[0].itemname)
+        var y = []
+        for(var i =0 ; i<x.value.length;i++){
+            let g= { label: x.value[i].itemname, y: x.value[i].Noofpurchase  }
+            y.push(g)
+        }
+    
+    var chart = new CanvasJS.Chart("chartContainer", {
+        theme: "dark1", // "light2", "dark1", "dark2"
+        animationEnabled: true, // change to true		
+        title:{
+            text: "selled items"
+        },
+        data: [
+        {
+            // Change type to "bar", "area", "spline", "pie",etc.
+            type: "column",
+            dataPoints: y
+        }
+        ]
+    });
+    chart.render();
+    
+    var chart2 = new CanvasJS.Chart("chartContainer2", {
+        theme: "dark1", // "light2", "dark1", "dark2"
+        animationEnabled: true, // change to true		
+        title:{
+            text: "pie representation"
+        },
+        data: [
+        {
+            // Change type to "bar", "area", "spline", "pie",etc.
+            type: "pie",
+            dataPoints: y
+        }
+        ]
+    });
+    chart2.render();
+    }
+    </script>
+</html>

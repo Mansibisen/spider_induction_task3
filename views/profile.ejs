@@ -1,0 +1,122 @@
+<title>Document</title>
+    <style>
+        
+        h1{
+            text-align: center;
+        }
+        .container2{
+            text-align: center;
+        }
+        
+    #container{
+        text-align: center;
+    border-style: solid;
+    width:50%;
+    margin-left: 350px;
+    margin-top: 400px;
+    
+    }
+    body {
+  font-size: 28px;
+}
+
+
+  
+footer{
+    background-color: #333;
+    text-align: center;
+    height:200px;
+    color: white;
+}
+
+.header{
+    height:300px;
+    color: white;
+    text-align: center;
+    font-size: 40px;
+    background-attachment:fixed;
+        background-image: url('flat-30-off.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+    
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 0;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #111;
+}
+li input {
+    display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  background-color: #333;
+  text-decoration: none;
+  font-size:30px
+}
+li input:hover{
+    background-color: #111;
+}
+
+.active {
+  background-color: #4CAF50;
+}
+
+
+    
+          
+ 
+    </style>
+</head>
+<body>
+    <div class="header">
+        <br><br><br>
+        <h1>NYKAAAAA</h1>
+        
+    </div>
+    <ul>
+        <li><a  href="login/home">Home</a></li>
+        
+        
+
+      </ul>
+    <div id = "container">
+    <div class ="container2"><br>
+    <img src="profile.jpg" alt="profile photo" ></div><br><br>
+    <span style="color: #4CAF50;">NAME:</span><span><%=data.value.username%></span><br><br><br>
+    <span style="color: #4CAF50;">EMAIL:</span><span><%=data.value.email%></span><br><br><br>
+    <span style="color: #4CAF50;">PHONE:</span><span><%=data.value.phone%></span><br><br><br>
+    <span style="color: #4CAF50;">ROLE:</span><span><%=data.value.role%></span><br><br><br>
+    
+    </div><br<br><br>
+  <footer class="py-5 bg-dark">
+        <div class="container">
+          <p class="m-0 text-center text-white">Copyright &copy; NYKAAAAA Website 2020</p>
+        </div>
+        <!-- /.container -->
+</footer>
+    
+</body>
+
+</html>

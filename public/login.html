@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html{
+        background-attachment:fixed;
+        background-image: url('signup.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        }
+        .form{
+            text-align: center;
+            margin-top: 200px;
+            margin-bottom: 200px;
+            font-size: 40px;
+        }
+        #text{
+            width:50%;
+            padding: 12px 20px;
+            border-radius: 6px;
+            box-sizing: border-box;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+        }
+        #submit{
+            width: 25%;
+            border-radius: 6px;
+            background-color:#C49102;
+            color: black;
+            padding: 14px 20px;
+            font-size: 30px;
+            cursor: pointer;
+            border: none;
+            margin: 8px 0;
+        }
+    </style>
+</head>
+<body>
+    <form class='form' action='/login' method="POST">
+        <label>UserName:</label><br>
+        <input type ="text"  id='text'name="username" required><br><br>
+        <label>Password:</label><br>
+        <input type ="password" name="password" id='text' required ><br><br>
+        <input type='submit' value='submit' id='submit' onclick="compul()">
+        
+
+
+
+    </form>
+</body>
+<script>
+function compul(){
+    var x = document.getElementById('text').required;
+  }
+</script>
+</html>

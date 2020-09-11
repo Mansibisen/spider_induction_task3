@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<style>
+    #container{
+        text-align: center;
+    border-style: solid;
+    width:50%;
+    margin-left: 350px;
+    
+    }
+    body {
+  font-size: 28px;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 0;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #111;
+}
+li input {
+    display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  background-color: #333;
+  text-decoration: none;
+  font-size:30px
+}
+li input:hover{
+    background-color: #111;
+}
+
+.active {
+  background-color: #4CAF50;
+}
+footer{
+    background-color: #333;
+    text-align: center;
+    height:200px;
+    color: white;
+}
+.header{
+    height:300px;
+    color: white;
+    text-align: center;
+    font-size: 40px;
+    background-attachment:fixed;
+        background-image: url('flat-30-off.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+    
+}
+.grades{
+    color:yellow;
+    font-size: 30px;
+    height:40px;
+    background-color: #cdcdcd;
+    border-style: solid black;
+}
+#form1{
+    text-align: center;
+}
+
+#form2{
+    text-align:center
+}
+#text{
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    font-size:30px
+}
+#submit{
+    width: 30%;
+            border-radius: 3px;
+            background-color:#4CAF50;
+            color: black;
+            padding: 10px 14px;
+            font-size: 30px;
+            cursor: pointer;
+            border: none;
+            margin: 4px 0;
+}
+</style>
+<body>
+    <div class="header">
+        <br><br><br>
+        <h1>NYKAAAAA</h1>
+        
+    </div>
+      
+      <ul>
+        <li><a class="active" href="#home">Home</a></li>
+        <li><form method="POST" action="/Wishlisted/check">
+            <input type="submit" value="WISHLIST">
+        </form></li>
+        <li><form method="POST" action="/AddedTOBag/check">
+            <input type="submit" value="GO TO BAG">
+        </form></li>
+        <li><form method="POST" action="/history">
+          <input type="submit" value="history">
+      </form></li>
+        
+        <li><form method="POST" action="/profile">
+          <input type="submit" value="Profile">
+      </form></li>
+      <li><a href="#contact">Contact</a></li>
+        <li style="float:left"><form method="POST" action="/search">
+          <input type="text" name="item" style="background-color: #4CAF50; color: black;"><input type="submit" value="search">
+      </form></li>
+        
+      </ul>
+      
+       
+    
+    
+    <% var max = data.value.length %>
+    <% for( var i=0; i< max; i++){%>
+        <br>
+        <div id= "container">
+           <br>
+            <div >
+                <div >
+                  <% if(data.value[i].productImage){ %>
+                    <a href="#"><img class="card-img-top" src="./uploads/<%= data.value[i]. productImage %>" alt="" width="700px" height="400px"></a>
+                    <%} else { %>
+                      <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+                      <%}%>
+                  <div >
+                    <h3 class="card-title">
+                      <a href="#"><%=data.value[i].itemname%></a>
+                    </h3>
+                    <p> COST:- Rs.<%=data.value[i].cost%></p>
+                    <p> BY :- <%=data.value[i].sellername%></p>
+                    <p> DISCOUNT :- <%=data.value[i].discount%> % </p>
+                    <p class="card-text"><%=data.value[i].manufacturedetails%></p>
+                  </div>
+                  
+                </div>
+              </div>
+              <% let x = data.value[i].quantityavailable%>
+            <% if(x === 0){%>
+                <h3 style="color: red;">OUT OF STOCK</h3>
+            <%}else{%>
+            <form method="POST" action="/Wishlisted" id="form1" >
+              
+                <input  type="hidden"  name = "itemname"value=<%=data.value[i].itemname%> >
+                <input  type="text" name = "name"style = " display: none; "value=<%=data.value[i].sellername%> >
+                <input  type="text" name = "cost" style = " display: none; "value=<%=data.value[i].cost%> >
+                <input  type="text" name = "manufacturedetails"style = " display: none; "value=<%=data.value[i].manufacturedetails%> >
+                <input  type="text"  name = 'discount'style = " display: none; "value=<%=data.value[i].discount%> >
+                <input  type="text"  name = 'photo'style = " display: none; "value=<%=data.value[i].productImage%> >
+                <label>Quantity</label>
+                <input  type="number" name ='Quantity' id= "text" min="1" max=<%=data.value[i].quantityavailable%>>
+                <input type = "submit" value = "WISHLIST" id="submit">
+            </form><br>
+            
+            <form method="POST" action="/AddedTOBag" id="form2" >
+                <input  type="hidden"  name = "itemname"value=<%=data.value[i].itemname%> >
+                <input  type="text" name = "name"style = " display: none; "value=<%=data.value[i].sellername%> >
+                <input  type="text" name = "cost" style = " display: none; "value=<%=data.value[i].cost%> >
+                <input  type="text" name = "manufacturedetails"style = " display: none; "value=<%=data.value[i].manufacturedetails%> >
+                <input  type="text"  name = 'discount'style = " display: none; "value=<%=data.value[i].discount%> >
+                <input  type="text"  name = 'photo'style = " display: none; "value=<%=data.value[i].productImage%> >
+                <label>Quantity</label>
+                <input  type="number" name ='Quantity' id= "text" min="1" max=<%=data.value[i].quantityavailable%> >
+                <input type = "submit" value = "ADD TO BAG" id="submit">
+            </form>
+            <%}%>
+            <br>
+            <div class="grades">
+                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+            </div>
+            
+        </div><br><br>
+    <%}%>
+
+
+<footer class="py-5 bg-dark">
+        <div class="container">
+          <p class="m-0 text-center text-white">Copyright &copy; NYKAAAAA Website 2020</p>
+        </div>
+        <!-- /.container -->
+</footer>
+    
+</body>
+
+
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html{
+           background-color: #c5c6d8 ;
+       }
+       .container{
+           background-color: white;
+           box-shadow: 15px 20px 15px #3e3d53;
+           width:1000px;
+           height:1300px;
+           margin-top: 300px;
+           margin-left: 300px;
+       }
+       form{    
+        text-align: center;
+            margin-top: 200px;
+            margin-bottom: 200px;
+            font-size: 40px;
+       }
+       #submit{
+           background-color:#3e3d53;
+           width: 25%;
+            border-radius: 6px;
+            
+            color: black;
+            padding: 14px 20px;
+            font-size: 30px;
+            cursor: pointer;
+            border: none;
+            margin: 8px 0;
+      }
+      #text{
+        width:50%;
+            padding: 12px 20px;
+            border-radius: 6px;
+            box-sizing: border-box;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #92a0ad;
+      }
+ 
+ 
+   
+ 
+ 
+
+   
+
+   </style>
+</head>
+<script>
+    document.getElementById("form").addEventListener("onsubmit",compul)
+    function compul(){
+    var x = document.getElementById('text').required;
+
+    console.log("got it ")
+  }
+</script>
+<body>
+    <div class="container">
+        <form id = "form" action="/add" method="POST" enctype="multipart/form-data">
+            
+            <label>ITEM-NAME</label><br>
+            <input type="text" name="itemname" id="text" required><br><br>
+            <label>COST</label><br>
+            <input type='number'name="cost" id="text" required><br><br>
+            <label>manufacture details</label><br>
+            <input type="text" name="manufacturedetails" id="text" required><br><br>
+            <label>Discount %</label><br>
+            <input type="number" name="discount" id="text" required><br><br>
+            <label>Quantity available</label><br>
+            <input type="number" name="Quantity" id="text" required><br><br>
+            <label>Photo</label><br>
+            <input type="file" name="photo" id="photo" required><br><br>
+            <input type="submit" id="submit" value="add" >
+
+        </form>
+    </div>
+    
+</body>
+
+</html>

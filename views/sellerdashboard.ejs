@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #container{
+        text-align: center;
+    border-style: solid;
+    width:50%;
+    margin-left: 350px;
+    
+    }
+    body {
+  font-size: 28px;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 0;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #111;
+}
+li input {
+    display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  background-color: #333;
+  text-decoration: none;
+  font-size:30px
+}
+li input:hover{
+    background-color: #111;
+}
+
+.active {
+  background-color: #4CAF50;
+}
+footer{
+    background-color: #333;
+    text-align: center;
+    height:200px;
+    color: white;
+}
+.header{
+    height:300px;
+    color: white;
+    text-align: center;
+    font-size: 40px;
+    background-attachment:fixed;
+        background-image: url('flat-30-off.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+    
+}
+.grades{
+    color:yellow;
+    font-size: 30px;
+    height:40px;
+    background-color: #cdcdcd;
+    border-style: solid black;
+}
+#form1{
+    text-align: center;
+}
+
+#form2{
+    text-align:center
+}
+#text{
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    font-size:30px
+}
+#submit{
+    width: 30%;
+            border-radius: 3px;
+            background-color:#4CAF50;
+            color: black;
+            padding: 10px 14px;
+            font-size: 30px;
+            cursor: pointer;
+            border: none;
+            margin: 4px 0;
+}
+</style>
+<body>
+    <div class="header">
+        <br><br><br>
+        <h1>NYKAAAAA</h1>
+        
+    </div>
+      
+      <ul>
+        <li><a class="active" href="login/home">Home</a></li>
+        <li><a href="add">ADD ITEM</a></li>
+        <li><form method="POST" action="/sellerhistory">
+            <input type="submit" value="HISTORY">
+        </form></li>
+        <li><a href="graph">graph</a></li>
+        <li><form method="POST" action="/profile">
+          <input type="submit" value="Profile">
+      </form></li>
+
+      </ul>
+    
+    
+    <% var max = data.value.length %>
+        <% for( var i=0; i< max; i++){%>
+            <br>
+            <div id= "container">
+                
+                <div >
+                    <div >
+                        <br>
+                        <% if(data.value[i]. productImage){ %>
+                      <a href="#"><img class="card-img-top" src="./uploads/<%= data.value[i].productImage %>" alt="" width="700px" height="400px"></a>
+                      <%} else { %>
+                        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+                        <%}%>
+                      <div class="card-body">
+                        <h3 >
+                            <a href="#"><%=data.value[i].itemname%></a>
+                          </h3>
+                          <p> COST:- Rs.<%=data.value[i].cost%></p>
+                          <p> BY :- <%=data.value[i].sellername%></p>
+                          <p> DISCOUNT :- <%=data.value[i].discount%> % </p>
+                          <p class="card-text"><%=data.value[i].manufacturedetails%></p>
+                          <p>Quantity available :- <%=data.value[i].quantityavailable%></p>
+                          
+                      </div>
+                      
+                    </div>
+                  </div>
+                <form method="POST" action="/update" id="form1" enctype="multipart/form-data">
+                    <input  type="hidden"  name = "itemname"value=<%=data.value[i].itemname%> >
+                    <input  type="text" name = "name"style = " display: none; "value=<%=data.value[i].sellername%> >
+                    <input  type="text" name = "cost" style = " display: none; "value=<%=data.value[i].cost%> >
+                    <input  type="text" name = "manufacturedetails"style = " display: none; "value=<%=data.value[i].manufacturedetails%> >
+                    <input  type="text"  name = 'discount'style = " display: none; "value=<%=data.value[i].discount%> >
+                    <input  type="text" name ='Quantity'style = " display: none; "value=<%=data.value[i].quantityavailable%> >
+                    <input  type="file" name ='photo'style = " display: none; "value=<%=data.value[i].productImage%> >
+                    
+                    
+                    <input type = "submit" value = "UPDATE" id="submit">
+                </form>
+                <br>
+                <div class="grades">
+                    <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                </div>
+                
+            </div>
+        <%}%>
+
+
+
+
+
+
+        <footer class="py-5 bg-dark">
+            <div class="container">
+              <p class="m-0 text-center text-white">Copyright &copy; NYKAAAAA Website 2020</p>
+            </div>
+            <!-- /.container -->
+    </footer>
+    
+</body>
+</html>

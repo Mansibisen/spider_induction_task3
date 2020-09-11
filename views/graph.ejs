@@ -58,7 +58,7 @@
     <div class="container">
       <p class="m-0 text-center text-white">Copyright &copy; NYKAAAAA Website 2020</p>
     </div>
-    <!-- /.container -->
+    
 </footer>
 </body>
 <script type="text/javascript">
@@ -79,14 +79,14 @@
         }
     
     var chart = new CanvasJS.Chart("chartContainer", {
-        theme: "dark1", // "light2", "dark1", "dark2"
-        animationEnabled: true, // change to true		
+        theme: "dark1", 
+        animationEnabled: true, 		
         title:{
             text: "selled items"
         },
         data: [
         {
-            // Change type to "bar", "area", "spline", "pie",etc.
+           
             type: "column",
             dataPoints: y
         }
@@ -95,14 +95,14 @@
     chart.render();
     
     var chart2 = new CanvasJS.Chart("chartContainer2", {
-        theme: "dark1", // "light2", "dark1", "dark2"
-        animationEnabled: true, // change to true		
+        theme: "dark1", 
+        animationEnabled: true,	
         title:{
             text: "pie representation"
         },
         data: [
         {
-            // Change type to "bar", "area", "spline", "pie",etc.
+            
             type: "pie",
             dataPoints: y
         }

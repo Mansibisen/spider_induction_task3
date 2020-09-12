@@ -49,11 +49,7 @@ router.post("/" ,upload ,async (req,res) =>{
     }
     db.collection("goods").insertOne(item,(err,collection) => {
         console.log("addded successfully")
-        db.collection("goods").find({"sellername": globalVariable.username}).toArray((err,result) =>{
-            console.log(result)
-            let data ={value: result}
-            res.render("sellerdashboard",{data:data})
-        })
+       res.redirect("/home")
            
     })
     

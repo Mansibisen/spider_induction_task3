@@ -1,24 +1,17 @@
 var router = require("express").Router();
-
-var bcrypt = require('bcrypt');
-
 const db = require("../db")
 
-router.get("/", async (req,res) => {
-    res.redirect("login.html")
-})
-router.post("/" , async (req,res) => {
+
+router.get("/" , async (req,res) => {
     try{
-     global.globalVariable = { username: req.body.username}   
-    db.collection("authcheck").findOne({"username":req.body.username}).then(
+    db.collection("authcheck").findOne({"username":globalVariable.username}).then(
         result => {
             
             if(result){
-               if(  bcrypt.compare( req.body.password,result.password)){
-                console.log("logged in successfully");
+               
                 
                 if(result.role==="seller"){
-                    db.collection("goods").find({"sellername":req.body.username}).toArray((err,result) =>{
+                    db.collection("goods").find({"sellername":globalVariable.username}).toArray((err,result) =>{
                         
                         let data ={value:result}
                         return res.render("sellerdashboard",{data:data})
@@ -43,7 +36,7 @@ router.post("/" , async (req,res) => {
                 }
                
                 
-               }
+               
                 
             }else{
                 console.log("user doesn't exist");
@@ -54,7 +47,7 @@ router.post("/" , async (req,res) => {
         console.log(err)
     }
 
-})
 
+})
 
 module.exports = router;

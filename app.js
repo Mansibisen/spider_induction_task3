@@ -1,4 +1,5 @@
 var express = require("express");
+const session  = require('express-session');
 var bodyParser = require("body-parser");
 var app = express()
 var cors = require("cors")
@@ -9,6 +10,7 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded(
     {extended:true}
 ))
+app.use(session({secret:"ssshhhhsshhh",saveUninitialized:true,resave:true}));
 
 
 
@@ -32,10 +34,25 @@ app.use("/graph",require("./routes/graph"))
 app.use("/search",require("./routes/search"))
 app.use("/profile",require("./routes/profile"))
 app.use("/history",require("./routes/customerhistory"))
+app.use("/home",require('./routes/home'))
+
 app.get( "/" ,(req,res) => {
             
     res.redirect('index.html')
 })
+app.get("/logout" , function (req,res,next)  {
+    if (req.session){
+    req.session.destroy(function(err){
+        if(err){
+            return next(err);
+        }else{
+           return res.redirect("/")
+        }
+    })
+}
+    
+})
+
 
 app.listen(5000)
 console.log("port is active on 5000")

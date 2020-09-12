@@ -54,11 +54,13 @@ router.post("/item" ,upload,async (req,res) => {
     db.collection("goods").updateOne({"itemname":x.value},{$set :data},(err,collection) =>{
         if (err) throw err ;
         console.log("updated value")
-        db.collection("goods").find({}).toArray((err,result) =>{
+        res.redirect("/home")
+        /*db.collection("goods").find({}).toArray((err,result) =>{
             
             let data ={value: result}
              res.render("sellerdashboard",{data:data})
-        })
+        })*/
+        
 
     })
 })

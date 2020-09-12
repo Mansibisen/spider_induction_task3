@@ -7,7 +7,7 @@ router.get("/" , async (req,res) => {
         
         
         data ={value:result}
-        console.log(result)
+        
        
         res.render("graph",{data:data})}
     )
